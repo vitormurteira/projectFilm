@@ -5,7 +5,7 @@ $config = array(
 	'db_host' => 'wf3.progweb.fr',
 	'db_user' => 'julienb',
 	'db_password' => 'webforce3',
-	'db_database' => 'movies_database'
+	'db_database' => 'julienb_sql0'
 );
 
 // J'inclus composer, db.php & functions.php
