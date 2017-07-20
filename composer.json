@@ -1,0 +1,12 @@
+{
+    "name": "vitor/project-film",
+    "description": "Movie database",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Vitor Murteira",
+            "email": "vitormurteira@netcabo.pt"
+        }
+    ],
+    "require": {}
+}
