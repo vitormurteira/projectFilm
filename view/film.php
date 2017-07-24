@@ -86,7 +86,20 @@
 
 					<div class="form-group">
 						<label>Categorie</label>
-						<input type="text" class="form-control" name="idmovies_categories" value="<?= $moviesInfos['idmovies_categories'] ?>" placeholder="Categorie" />
+						<select name="idmovies_categories" class="form-control">
+						<!--idmovies_categories est l'index de la table "movies_categories" qui contient les valeurs de la table "categories"-->
+							<option value="">choisissez</option>
+							<?php foreach ($categoryList as $index=>$categoryArray) :?>
+								<!--$categoryArray est une nouvelle variable qui permet de lire (ligne par ligne les valeurs associées à l'index "idmovies_categories")
+								pour idmovies_categories =1 ; movies_categories-name = Drame;
+								pour idmovies_categories =2 ; movies_categories-name = Comedie;
+								pour idmovies_categories =3 ; movies_categories-name = SciFi;
+								pour idmovies_categories =4 ; movies_categories-name = Horror;-->
+								<option value="<?= $categoryArray['idmovies_categories'] ?>"
+								<?=$moviesInfos['idmovies_categories'] == $categoryArray['idmovies_categories'] ? ' selected="selected"':'' ?>>
+								<?= $categoryArray['movies_categories_name'] ?></option> 
+							<?php endforeach; ?>
+						</select>
 					</div>
 
 		<!--8. ACTORS DU FILM AJOUTE-->
@@ -100,7 +113,21 @@
 
 					<div class="form-group">
 						<label>Nationalité</label>
-						<input type="text" class="form-control" name="idmovies_nationality" value="<?= $moviesInfos['idmovies_nationality'] ?>" placeholder="Nationalité" />
+						<select name="idmovies_nationality" class="form-control">
+						<!--idmovies_nationality est l'index de la table "movies_nationality" qui contient les valeurs de la table "nationality"-->
+							<option value="">choisissez</option>
+							<?php foreach ($nationalityList as $index=>$nationality) :?>
+								<!--$categoryArray est une nouvelle variable qui permet de lire (ligne par ligne les valeurs associées à l'index "idmovies_nationality")
+								pour idmovies_nationality =1 ; movies_nationality-name = francais;
+								pour idmovies_nationality =2 ; movies_nationality-name = americaine;
+								pour idmovies_nationality =3 ; movies_nationality-name = tchetchenne;
+								pour idmovies_nationality =4 ; movies_nationality-name = luxembourgeoise;
+								pour idmovies_nationality =4 ; movies_nationality-name = portugaise;-->
+								<option value="<?= $nationality['idmovies_nationality'] ?>"
+								<?=$moviesInfos['idmovies_nationality'] == $nationality['idmovies_nationality'] ? ' selected="selected"':'' ?>>
+								<?= $nationality['movies_nationality_name'] ?></option> 
+							<?php endforeach; ?>
+						</select>
 					</div>
 
 		<!--10. SUPPORT DU FILM AJOUTE-->
@@ -108,11 +135,20 @@
 					<div class="form-group">
 						<label>Support</label>
 						<select name="idmovies_support" class="form-control">
+						<!--"idmovies_support" est l'index de la table "movies_support" qui contient en "valeur" l'ensemble des données-->
 							<option value="">choisissez</option>
-							<?php foreach ($supportList as $idmovies_support=>$movies_support) : ?>
-								<option value="<?= $movies_support['idmovies_support'] ?>"<?= $moviesInfos['idmovies_support'] == $movies_support['idmovies_support'] ? ' selected=selected"' : '' ?>><?= $movies_support['movies_support_name'] ?></option>
+							<?php foreach ($movies_support as $index=>$support_movies) : ?>
+								<!--$support_movies est une nouvelle variable qui permet de lire (ligne par ligne les valeurs associées à l'index "idmovies_support")
+								pour idmovies_name =1 ; movies_support-name = CD;
+								pour idmovies_name =2 ; movies_support-name = DVD;
+								pour idmovies_name =3 ; movies_support-name = blu-ray;-->
+
+								<option value=
+								"<?= $support_movies['idmovies_support'] ?>"
+								<?= $moviesInfos['idmovies_support'] == $support_movies['idmovies_support'] ? ' selected="selected"' : '' ?>>
+								<?= $support_movies['movies_support_name'] ?></option>
 								<!--
-								a. supportList : variable contenant l'ensemble des formats de supportrs proposés par le select
+								a. supportList : variable contenant l'ensemble des formats de supports proposés par le "select"
 								b. $idmovies_support : index du tableau movies_support compilant les noms de support
 								c. $movies_support_name : champ de nom de support pour les formats de films
 								d. $moviesInfos['idmovies_support']: colonne de la table "movies" permettant une jointure avec la table de support-->
