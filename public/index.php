@@ -9,7 +9,7 @@ require dirname(dirname(__FILE__)).'/inc/db.php';
 
 // fetch la liste des categories et le numero de filmes
 $sql = '
-  SELECT categories.idmovies_categories AS cats, COUNT(movies.idmovies) AS numMovies
+  SELECT categories.movies_categories_name AS cats, COUNT(movies.idmovies) AS numMovies
   FROM movies
   INNER JOIN categories ON movies.idmovies_categories = categories.idmovies_categories
   ORDER BY cats
