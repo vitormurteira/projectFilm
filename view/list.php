@@ -1,12 +1,14 @@
 
 <!--dropdown menu-->
-
-<select class="">
-  <option>pages</option>
-  <?php for ($p=1;$p<=$maxPageNum;$p++) : ?>
-    <option value="#?page=<?php echo $p ?>">page <?php echo $p ?></option>
-  <?php endfor; ?>
-</select>
+<form class="" action="">
+  <select class="" name="page">
+    <option>pages</option>
+    <?php for ($p=1;$p<=$maxPageNum;$p++) : ?>
+      <option value="<?php echo $p ?>">page <?php echo $p ?></option>
+    <?php endfor; ?>
+  </select>
+  <button type="submit" class="btn btn-default">OK</button>
+</form>
 <br>
 
 <!--list-->
