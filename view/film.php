@@ -7,7 +7,7 @@
 
 			<?php if (!empty($moviesInfos['idmovies'])) : ?>
 				modification de <?=$moviesInfos['movies_title'] ?>
-			<!--traduction: si l'idmovies du tableau moviesInfo n'est pas vide, alors on modifie la table movies_title de la variable $moviesInfos   ->
+			<!--traduction: si l'idmovies du tableau moviesInfo n'est pas vide, alors on modifie la table movies_title de la variable $moviesInfos   -->
 			<?php else:?>
 			Ajout d'un film
 			<?php endif;?>
@@ -18,11 +18,12 @@
 		<?php if (!empty($errorList)) : ?>
 			<div class="alert alert-danger" role="alert">
 				<?php foreach ($errorList as $currentErrorText) : ?>
+          <?php echo $currentErrorText ?><br>
 				<?php endforeach;?>
-			</div>	
+			</div>
 		<?php endif; ?>
 
-<!---PARTIE HTML DU FORMULAIRE-->
+<!--PARTIE HTML DU FORMULAIRE-->
 
 		<form action="" method="post" enctype="multipart/form-data">
 
@@ -32,14 +33,15 @@
 
 		<!--maquillage du formulaire suivant l'approche col -->
 
-		<!--1. TITRE DU FILM AJOUTE-->
+		<!--1. TITRE DU FILM AJOUTE et auto complete-->
 
 					<div class="form-group">
 						<label>Title</label>
 						<input type="text" class="form-control" name="movies_title" value="<?= $moviesInfos['movies_title'] ?>" placeholder="Titre" />
 					</div>
+          <button type="submit" name="autocomplete">search</button>
 
-<!--la donnée saisie dans "name" doit etre égale à l'index du tableau de recuperation de données saisie dans le fichier view/film.php
+<!--la donnée saisie dans "name" doit etre égale à l'index du tableau de recuperation de données saisie dans le fichier view/film.php-->
 
 		<!--2. SYNOPSIS DU FILM AJOUTE-->
 
@@ -97,7 +99,7 @@
 								pour idmovies_categories =4 ; movies_categories-name = Horror;-->
 								<option value="<?= $categoryArray['idmovies_categories'] ?>"
 								<?=$moviesInfos['idmovies_categories'] == $categoryArray['idmovies_categories'] ? ' selected="selected"':'' ?>>
-								<?= $categoryArray['movies_categories_name'] ?></option> 
+								<?= $categoryArray['movies_categories_name'] ?></option>
 							<?php endforeach; ?>
 						</select>
 					</div>
@@ -125,7 +127,7 @@
 								pour idmovies_nationality =4 ; movies_nationality-name = portugaise;-->
 								<option value="<?= $nationality['idmovies_nationality'] ?>"
 								<?=$moviesInfos['idmovies_nationality'] == $nationality['idmovies_nationality'] ? ' selected="selected"':'' ?>>
-								<?= $nationality['movies_nationality_name'] ?></option> 
+								<?= $nationality['movies_nationality_name'] ?></option>
 							<?php endforeach; ?>
 						</select>
 					</div>
@@ -177,7 +179,7 @@
 
 			<?php if (!empty($moviesInfos['idmovies'])) : ?>
 				<input type="submit" class="btn btn-success btn-block" value="Modifier" />
-	    	<?php else : ?>
+	    <?php else : ?>
 				<input type="submit" class="btn btn-success btn-block" value="Ajouter" />
 			<?php endif; ?>
 
@@ -186,10 +188,10 @@
 </div>
 
 
-<!--definition de variable 
+<!--definition de variable
 
 $currentPage -> utilisé dans header -> définit dans le fichier config.php
-$moviesInfo -> utilisé dans view/film.php -> définit dans le fichier public/film.php 
+$moviesInfo -> utilisé dans view/film.php -> définit dans le fichier public/film.php
 $errorList -> utilisé dans view/php.php -> définit dans le fichier view/php.php
 $currentErrorText -> utilisé dans le fichier view/php.php -> définit dans le fichier view/php.php
 
