@@ -39,6 +39,8 @@
 						<input type="text" class="form-control" name="movies_title" value="<?= $moviesInfos['movies_title'] ?>" placeholder="Titre" />
 					</div>
 
+<!--la donnée saisie dans "name" doit etre égale à l'index du tableau de recuperation de données saisie dans le fichier view/film.php
+
 		<!--2. SYNOPSIS DU FILM AJOUTE-->
 
 					<div class="form-group">
@@ -84,7 +86,7 @@
 
 					<div class="form-group">
 						<label>Categorie</label>
-						<input type="text" class="form-control" name="idmovies_categorie" value="<?= $moviesInfos['idmovies_categories'] ?>" placeholder="Categorie" />
+						<input type="text" class="form-control" name="idmovies_categories" value="<?= $moviesInfos['idmovies_categories'] ?>" placeholder="Categorie" />
 					</div>
 
 		<!--8. ACTORS DU FILM AJOUTE-->
@@ -105,8 +107,31 @@
 
 					<div class="form-group">
 						<label>Support</label>
-						<input type="text" class="form-control" name="idmovies_support" value="<?= $moviesInfos['idmovies_support'] ?>" placeholder="Support" />
+						<select name="idmovies_support" class="form-control">
+							<option value="">choisissez</option>
+							<?php foreach ($supportList as $idmovies_support=>$movies_support) : ?>
+								<option value="<?= $movies_support['idmovies_support'] ?>"<?= $moviesInfos['idmovies_support'] == $movies_support['idmovies_support'] ? ' selected=selected"' : '' ?>><?= $movies_support['movies_support_name'] ?></option>
+								<!--
+								a. supportList : variable contenant l'ensemble des formats de supportrs proposés par le select
+								b. $idmovies_support : index du tableau movies_support compilant les noms de support
+								c. $movies_support_name : champ de nom de support pour les formats de films
+								d. $moviesInfos['idmovies_support']: colonne de la table "movies" permettant une jointure avec la table de support-->
+
+
+							<?php endforeach; ?>
+						</select>
 					</div>
+
+<!--la donnée saisie dans "name" doit etre égale à l'index du tableau de recuperation de données saisie dans le fichier view/film.php-->
+
+		<!--11. CHEMIN DU FILM AJOUTE-->
+
+					<div class="form-group">
+						<label>Chemin</label>
+						<input type="text" class="form-control" name="movies_path" value="<?= $moviesInfos['movies_path'] ?>" placeholder="Chemin" />
+					</div>
+
+
 
 				</div>
 
