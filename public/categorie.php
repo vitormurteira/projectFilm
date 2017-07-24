@@ -1,5 +1,8 @@
 <?php
 
+// nécessité de definir chaque page comme le currentpage à defaut pour que la navigation interprete les correspondance 
+$currentPage = categorie;
+
 // J'inclus le fichier de config
 require dirname(dirname(__FILE__)).'/inc/config.php';
 require dirname(dirname(__FILE__)).'/inc/db.php';

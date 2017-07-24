@@ -45,7 +45,7 @@ if (empty($currentPage)) {
 
           <ul class="nav nav-pills">
               <li<?= $currentPage == 'home' ? ' class="active"' : '' ?>><a href="index.php">Accueil</a></li>
-              <li<?= $currentPage == 'list' ? ' class="active"' : '' ?>><a href="list.php">Catégories</a></li>
+              <li<?= $currentPage == 'categorie' ? ' class="active"' : '' ?>><a href="categorie.php">Catégories</a></li>
               <li<?= $currentPage == 'film' ? ' class="active"' : '' ?>><a href="film.php">Ajouter un film</a></li>
         	</ul>
 

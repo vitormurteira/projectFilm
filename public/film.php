@@ -5,6 +5,11 @@
 require '../inc/config.php';
 require '../inc/db.php';
 
+
+// nécessité de definir chaque page comme le currentpage à defaut pour que la navigation interprete les correspondance 
+$currentPage = film;
+
+
 // pour ajouter un film : utilisation de la methode POST plus securisée que la methode GET (recuperation de données externe)
 
 $errorList = array();
