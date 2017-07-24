@@ -312,7 +312,7 @@ if(!empty($_POST)){
 
 // 1. on cree une variable qui regroupe l'ensemble des supports 
 
-$supportList = array();
+$movies_support = array();
 
 $sql='
 	SELECT *
@@ -325,10 +325,10 @@ if ($stmtsupportname === false){
 	print_r($pdo->errorInfo());
 }
 else {
-	$supportList = $stmtsupportname->fetchAll(PDO::FETCH_ASSOC);
+	$movies_support = $stmtsupportname->fetchAll(PDO::FETCH_ASSOC);
+	//echo '$movies_support = ';
+	//print_r($movies_support);exit;
 }
-
-
 
 /*il est nécessaire d'initialiser le tableau de données compilant l'ensemble des requetes:*/
 
@@ -347,9 +347,83 @@ $moviesInfos = array(
 	'movies_path'=>'',
 	);
 
+
+
+// creation du select offrant un choix de nationality:
+
+// 1. on cree une variable qui regroupe l'ensemble des nationality 
+
+$nationalityList = array();
+
+$sql='
+	SELECT *
+	FROM nationality
+'; 
+
+$stmtnationalityname = $pdo->query($sql);
+
+if ($stmtnationalityname === false){
+	print_r($pdo->errorInfo());
+}
+else {
+	$nationalityList = $stmtnationalityname->fetchAll(PDO::FETCH_ASSOC);
+}
+
+
+
+/*il n'est probablement pas nécessaire d'initialiser à nouveau le tableau de données compilant l'ensemble des requetes:*/
+
+$moviesInfos = array(
+	'idmovies'=> 0,
+	'movies_title'=>'',
+	'movies_synopsis'=>'',
+	'movies_affiche_url'=>'',
+	'movies_release_date'=>'',
+	'movies_registery_date'=>'',
+	'movies_description'=>'',
+	'idmovies_categories'=>'',
+	'movies_actors'=>'',
+	'idmovies_nationality'=>'',
+	'idmovies_support'=>'',
+	'movies_path'=>'',
+	);
+
+
+
+// creation du select offrant un choix de category:
+
+// 1. on cree une variable qui regroupe l'ensemble des category
+
+$categoryList = array();
+
+$sql='
+	SELECT *
+	FROM categories
+'; 
+
+$stmtcategoryname = $pdo->query($sql);
+
+if ($stmtcategoryname === false){
+	print_r($pdo->errorInfo());
+}
+else {
+	$categoryList = $stmtcategoryname->fetchAll(PDO::FETCH_ASSOC);
+}
+
+
+
+
+
 require '../view/header.php';
 require '../view/film.php';
 require '../view/footer.php';
+
+
+
+
+
+
+
 
 
 /*definition de variable:
