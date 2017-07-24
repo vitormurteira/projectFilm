@@ -34,7 +34,7 @@ $sql .= '
 
 $pdoStatement = $pdo->prepare($sql); //=>prepare car donnée "externe" si recherche
 
-$pdoStatement->bindValue(':search', '%$search%');
+$pdoStatement->bindValue(':search', "%$search%");
 
 if ($pdoStatement->execute() === false) {
   print_r($pdo->errorInfo());
